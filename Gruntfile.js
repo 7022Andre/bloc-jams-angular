@@ -6,6 +6,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask( 'run', [ 'hapi', 'watch' ]);
 
+    grunt.registerTask('eslint', ['eslint']);
+
     grunt.initConfig({
 
         watch: {
@@ -70,6 +72,10 @@ module.exports = function(grunt) {
             }
         },
 
+        eslint: {
+            target: ['./app/*']
+        },
+
         clean: ['./dist']
     });
 
@@ -77,5 +83,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-hapi');
-
+    grunt.loadNpmTasks('grunt-eslint');
 };
