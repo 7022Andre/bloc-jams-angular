@@ -55,7 +55,7 @@
         * @param {Object} song
         */
         var getSongIndex = function (song) {
-            return currentAlbum.songs.indexOf(song);  
+            return currentAlbum.songs.indexOf(song);
         };
         /**
         * @desc Current song object
@@ -68,6 +68,7 @@
         * @param {Object} song
         */
         SongPlayer.play = function (song) {
+            // If song is undefined set it to song, otherwise set it to SongPlayer.currentSong;
             song = song || SongPlayer.currentSong;
             if (SongPlayer.currentSong !== song) {
                 setSong(song);
