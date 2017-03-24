@@ -25,6 +25,11 @@
             replace: true, // Directive element <seek-bar> will be replaced with HTML template (rather than inserted between tags)
             restrict: 'E', // Treats directive as element
             scope: { }, // Creates isolated scope exclusively for this directive
+            /**
+            * @function link
+            * @desc Responsible for registering DOM listeners + updating DOM
+            * @param {Object} scope, element (jQLite), attributes (https://docs.angularjs.org/api/ng/service/$compile#attributes)
+            */
             link: function (scope, element, attributes) {
                 scope.value = 0; // Holds value of seek bar (either song or volume)
                 scope.max = 100;
@@ -46,11 +51,19 @@
                 };
                 /**
                 * @function scope.fillStyle
-                * @desc Returns width of seek bar filling portion which is injected as CSS style in fill `class`
+                * @desc Uses width of seek bar filling as percentage which is injected as CSS style to bar fill `class`
                 * @returns {Object}
                 */
                 scope.fillStyle = function () {
                     return {width: percentString()};
+                };
+                /**
+                * @function scope.thumbStyle
+                * @desc Uses width of seek bar filling portion which is injected as CSS style in fill `class` to set thumb
+                * @returns {Object}
+                */
+                scope.thumbStyle = function () {
+                    return {left: percentString()};
                 };
                 /**
                 * @function scope.onClickSeekbar
