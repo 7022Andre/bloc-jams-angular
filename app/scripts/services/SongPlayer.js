@@ -30,7 +30,7 @@
                 preload: true
             });
             currentBuzzObject.bind('timeupdate', function () {
-                $rootScope.$apply(function() {
+                $rootScope.$apply(function () {
                     SongPlayer.currentTime = currentBuzzObject.getTime();
                 });
             });
@@ -72,6 +72,11 @@
         * @type {Number}
         */
         SongPlayer.currentTime = null;
+        /**
+        * @desc Sets volume of current song to 75%
+        * @type {Number}
+        */
+        SongPlayer.volume = 75;
         /**
         * @function SongPlayer.play
         * @desc Plays song
@@ -134,9 +139,19 @@
         * @desc Set current time (in seconds) of currently playing song
         * @param {Number} time
         */
-        SongPlayer.setCurrentTime = function(time) {
+        SongPlayer.setCurrentTime = function (time) {
             if (currentBuzzObject) {
                 currentBuzzObject.setTime(time);
+            }
+        };
+        /**
+        * @function setVolume
+        * @desc Set volume of currently playing song
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function (value) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(value);
             }
         };
         return SongPlayer;
@@ -144,5 +159,5 @@
 
     angular
         .module('blocJams')
-        .factory('SongPlayer', ['$rootScope','Fixtures', SongPlayer]);
+        .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
 })();

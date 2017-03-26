@@ -43,13 +43,13 @@
                 /**
                 * @desc Watches for changes to attribute 'value' (added as attribute to player_bar.html); sets new scope value to attribute 'value'
                 */
-                attributes.$observe('value', function(newValue) {
+                attributes.$observe('value', function (newValue) {
                     scope.value = newValue;
                 });
                 /**
                 * @desc Watches for changes to attribute 'max' (added as attribute to player_bar.html); sets new scope value to attribute 'max'
                 */
-                attributes.$observe('max', function(newValue) {
+                attributes.$observe('max', function (newValue) {
                     scope.max = newValue;
                 });
                 /**
