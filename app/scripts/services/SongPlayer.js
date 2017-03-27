@@ -29,10 +29,15 @@
                 formats: ['mp3'],
                 preload: true
             });
+            // Gets current play time from currently playing song
             currentBuzzObject.bind('timeupdate', function () {
                 $rootScope.$apply(function () {
                     SongPlayer.currentTime = currentBuzzObject.getTime();
                 });
+            });
+            // Checks if song has ended; if true, play next song
+            currentBuzzObject.bind('ended', function () {
+                SongPlayer.next();
             });
             SongPlayer.currentSong = song;
         };
@@ -85,6 +90,9 @@
         SongPlayer.play = function (song) {
             // If song is undefined set it to song, otherwise set it to SongPlayer.currentSong;
             song = song || SongPlayer.currentSong;
+            if (song === null) {
+                    song = currentAlbum.songs[0];
+                }
             if (SongPlayer.currentSong !== song) {
                 setSong(song);
                 playSong(song);
