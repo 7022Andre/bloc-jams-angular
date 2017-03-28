@@ -83,6 +83,25 @@
         */
         SongPlayer.volume = 75;
         /**
+        * @function SongPlayer.muted
+        * @desc Checks if song is muted.
+        * @return Boolean
+        */
+        SongPlayer.muted = function () {
+            if (currentBuzzObject !== null) {
+                return currentBuzzObject.isMuted();
+            }
+        };
+        /**
+        * @function SongPlayer.toggleMute
+        * @desc Switches between mute and unmute
+        */
+        SongPlayer.toggleMute = function () {
+            if (currentBuzzObject !== null) {
+                currentBuzzObject.toggleMute();
+            }
+        };
+        /**
         * @function SongPlayer.play
         * @desc Plays song
         * @param {Object} song

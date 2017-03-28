@@ -143,6 +143,7 @@
     font-size: 1.1rem;
     display: inline-block;
     vertical-align: middle;
+    padding: 0.5rem;
 }
 
 .player-bar .volume .seek-bar {
